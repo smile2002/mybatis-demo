@@ -6,7 +6,6 @@ import java.util.List;
 
 import cn.smile.model.User;
 import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.jdbc.SQL;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -23,6 +22,9 @@ public class App
         SqlSessionFactory sqlSessionFactory;
         try {
             Reader reader = Resources.getResourceAsReader("mybatis-config.xml");
+
+            /** SessionFactory创建过程中解析 mybatis-config.xml 配置，
+                识别POJO类型，解析所有Mapper **/
             sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
             reader.close();
 
@@ -35,8 +37,5 @@ public class App
         } catch(IOException e) {
             e.printStackTrace();
         }
-
-
-
     }
 }

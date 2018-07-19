@@ -14,7 +14,7 @@
         </plugin-->
 
         <commentGenerator>
-            <property name="suppressAllComments" value="true"/>
+            <property name="suppressAllComments" value="false"/>
             <property name="suppressDate" value="true"/>
         </commentGenerator>
 
@@ -24,9 +24,9 @@
                         password="smile#2002">
         </jdbcConnection>
 
-        <javaModelGenerator targetPackage="cn.smile.model." targetProject="src/main/java"/>
-        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
-        <javaClientGenerator targetPackage="cn.smile.dao" targetProject="src/main/java" type="XMLMAPPER"/>
+        <javaModelGenerator targetPackage="cn.smile.model." targetProject="generator/src/main/java"/>
+        <sqlMapGenerator targetPackage="mapper" targetProject="generator/src/main/resources"/>
+        <javaClientGenerator targetPackage="cn.smile.dao" targetProject="generator/src/main/java" type="XMLMAPPER"/>
         <table tableName="user">
             <!--generatedKey column="id" sqlStatement="Mysql" /-->
         </table>

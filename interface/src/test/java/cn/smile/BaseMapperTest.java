@@ -1,19 +1,18 @@
-import cn.smile.model.User;
+package cn.smile;
+
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.BeforeClass;
-import org.junit.Test;
 
 import java.io.IOException;
 import java.io.Reader;
-import java.util.List;
 
 /**
  * Created by Smile on 2018/7/19.
  */
-public class UserMapperTest {
+public class BaseMapperTest {
 
     private static SqlSessionFactory sqlSessionFactory;
 
@@ -28,16 +27,7 @@ public class UserMapperTest {
         }
     }
 
-    @Test
-    public void testSelectAll() {
-        SqlSession sqlSession = sqlSessionFactory.openSession();
-        try {
-            List<User> userList = sqlSession.selectList("selectAll");
-            for (User user : userList) {
-                System.out.printf("%s %s %s\n", user.getUserId(), user.getAge(), user.getName());
-            }
-        } finally {
-            sqlSession.close();
-        }
+    public SqlSession getSqlSession() {
+        return sqlSessionFactory.openSession();
     }
 }

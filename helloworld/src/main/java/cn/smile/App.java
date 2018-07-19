@@ -28,12 +28,15 @@ public class App
             sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
             reader.close();
 
-            SqlSession session = sqlSessionFactory.openSession();
-            List<User> userList = session.selectList("selectAll");
-            for (User user : userList) {
-                System.out.printf("%s %s %s\n", user.getUserId(), user.getAge(), user.getName());
+            SqlSession sqlSession = sqlSessionFactory.openSession();
+            try {
+                List<User> userList = sqlSession.selectList("selectAll");
+                for (User user : userList) {
+                    System.out.printf("%s %s %s\n", user.getUserId(), user.getAge(), user.getName());
+                }
+            } finally {
+                sqlSession.close();
             }
-
         } catch(IOException e) {
             e.printStackTrace();
         }

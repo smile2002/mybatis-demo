@@ -9,9 +9,9 @@
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
 
-        <!--plugin type="tk.mybatis.mapper.generator.MapperPlugin">
-            <property name="mappers" value="com.unionpay.cpc.svc.utils.MyMapper"/>
-        </plugin-->
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="cn.smile.utils.MyMapper"/>
+        </plugin>
 
         <commentGenerator>
             <property name="suppressAllComments" value="true"/>
@@ -24,7 +24,7 @@
                         password="smile#2002">
         </jdbcConnection>
 
-        <javaModelGenerator targetPackage="cn.smile.model." targetProject="src/main/java"/>
+        <javaModelGenerator targetPackage="cn.smile.model" targetProject="src/main/java"/>
         <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources"/>
         <javaClientGenerator targetPackage="cn.smile.dao" targetProject="src/main/java" type="XMLMAPPER"/>
         <table tableName="user">

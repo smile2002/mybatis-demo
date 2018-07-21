@@ -1,6 +1,7 @@
 package cn.smile;
 
 import cn.smile.domain.User;
+import cn.smile.mapper.User2Mapper;
 import cn.smile.mapper.UserMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
@@ -138,6 +139,26 @@ public class UserMapperTest extends BaseMapperTest {
         try {
             UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
             User user = userMapper.selectByUserId("18500000024");
+            if (user != null) {
+                System.out.printf("%s %s\n", user.getUserId(), user.getName());
+            } else {
+                System.out.println("user 18500000024 does not exists!");
+            }
+        } finally {
+            sqlSession.close();
+        }
+    }
+
+
+    /**
+     * 仅接口+注解方式，不依赖XML Mapper
+     */
+    @Test
+    public void testSelectByUserId2() {
+        SqlSession sqlSession = getSqlSession();
+        try {
+            User2Mapper user2Mapper = sqlSession.getMapper(User2Mapper.class);
+            User user = user2Mapper.selectByUserId2("18500000024");
             if (user != null) {
                 System.out.printf("%s %s\n", user.getUserId(), user.getName());
             } else {

@@ -10,6 +10,8 @@
   <version>1.0-SNAPSHOT</version>
   <modules>
     <module>helloworld</module>
+    <module>interface</module>
+    <module>generator</module>
   </modules>
 
   <name>mybatis-demo</name>
